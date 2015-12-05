@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -19,7 +19,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wheel" image="icon-wheel-off" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Wheel" image="icon-wheel-off" selectedImage="icon-wheel-on" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,33 +39,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photo" image="icon-camera-off" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Photo" image="icon-camera-off" selectedImage="icon-camera-on" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--VideoViewController-->
-        <scene sceneID="9eB-XP-cHe">
-            <objects>
-                <viewController id="Yn7-uf-UhP" userLabel="VideoViewController" customClass="VideoPlayerViewController" customModule="DaisyWheel" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BZN-P5-14z"/>
-                        <viewControllerLayoutGuide type="bottom" id="hbw-tq-w7R"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QEy-13-pqW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ikU-NP-1Yu"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7b3-dt-8Vq" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2339" y="1091"/>
-        </scene>
-        <!--Video View Controller-->
+        <!--Video-->
         <scene sceneID="gnl-bc-aDj">
             <objects>
                 <viewController id="exL-ul-EUW" customClass="VideoViewController" customModule="DaisyWheel" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,27 +57,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfS-9k-KLL">
-                                <rect key="frame" x="285" y="285" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuG-qr-2Bi">
+                                <rect key="frame" x="260.5" y="285" width="79" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Play"/>
+                                <state key="normal" title="Play Button"/>
                                 <connections>
-                                    <segue destination="Yn7-uf-UhP" kind="presentation" id="NgA-Hp-OtY"/>
+                                    <segue destination="Xex-9g-Gwu" kind="show" identifier="MoviePlayer" id="e4T-wm-Wqc"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PfS-9k-KLL" firstAttribute="centerX" secondItem="jah-VJ-CTc" secondAttribute="centerX" id="H4J-sA-CN1"/>
-                            <constraint firstItem="PfS-9k-KLL" firstAttribute="centerY" secondItem="jah-VJ-CTc" secondAttribute="centerY" id="xQR-Nl-TkH"/>
+                            <constraint firstItem="QuG-qr-2Bi" firstAttribute="centerY" secondItem="jah-VJ-CTc" secondAttribute="centerY" id="1fQ-1k-CEV"/>
+                            <constraint firstItem="QuG-qr-2Bi" firstAttribute="centerX" secondItem="jah-VJ-CTc" secondAttribute="centerX" id="QZC-gA-7G0"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Video" image="icon-video-off" selectedImage="icon-video-on" id="qc6-kt-UiB"/>
                     <navigationItem key="navigationItem" id="hA3-wv-V2R"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEp-8K-Hdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1638" y="1091"/>
+            <point key="canvasLocation" x="-1017" y="915"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="hQZ-ya-3Xy">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="Xex-9g-Gwu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7RU-bJ-ASy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-293" y="956"/>
         </scene>
         <!--Fourth-->
         <scene sceneID="emC-Ea-aL3">
@@ -113,7 +102,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Reminder" image="icon-reminder-off" id="aZz-Qr-1Vi"/>
+                    <tabBarItem key="tabBarItem" title="Reminder" image="icon-reminder-off" selectedImage="icon-reminder-on" id="aZz-Qr-1Vi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91b-q1-zk1" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,8 +121,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="exL-ul-EUW" kind="relationship" relationship="viewControllers" id="NKK-xX-aNz"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="xKs-78-Gpi" kind="relationship" relationship="viewControllers" id="RRW-Gv-Q0F"/>
                         <segue destination="Q6F-pa-jmC" kind="relationship" relationship="viewControllers" id="Fdu-Ez-GzP"/>
                     </connections>
                 </tabBarController>
@@ -141,31 +130,15 @@
             </objects>
             <point key="canvasLocation" x="-440" y="-584"/>
         </scene>
-        <!--Video-->
-        <scene sceneID="nJD-do-dPI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKs-78-Gpi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Video" image="icon-video-off" id="42B-DK-vZ4"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WHU-6i-H3A">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="exL-ul-EUW" kind="relationship" relationship="rootViewController" id="RK2-ZW-ErE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Cz-cP-6hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="950" y="1098"/>
-        </scene>
     </scenes>
     <resources>
         <image name="icon-camera-off" width="30" height="30"/>
+        <image name="icon-camera-on" width="30" height="29"/>
         <image name="icon-reminder-off" width="27" height="29"/>
+        <image name="icon-reminder-on" width="26" height="29"/>
         <image name="icon-video-off" width="30" height="30"/>
+        <image name="icon-video-on" width="30" height="30"/>
         <image name="icon-wheel-off" width="29" height="30"/>
+        <image name="icon-wheel-on" width="29" height="30"/>
     </resources>
 </document>
