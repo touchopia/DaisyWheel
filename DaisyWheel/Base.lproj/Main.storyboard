@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <scenes>
+        <!--Wheel-->
+        <scene sceneID="hNz-n2-bh7">
+            <objects>
+                <viewController id="9pv-A4-QxB" customClass="WheelViewController" customModule="DaisyWheel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
+                        <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Wheel" image="icon-wheel-off" id="acW-dT-cKf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="632" y="-618"/>
+        </scene>
+        <!--Photo-->
+        <scene sceneID="wg7-f3-ORb">
+            <objects>
+                <viewController id="8rJ-Kc-sve" customClass="PhotoViewController" customModule="DaisyWheel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Photo" image="icon-camera-off" id="cPa-gy-q4n"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="360"/>
+        </scene>
+        <!--VideoViewController-->
+        <scene sceneID="9eB-XP-cHe">
+            <objects>
+                <viewController id="Yn7-uf-UhP" userLabel="VideoViewController" customClass="VideoPlayerViewController" customModule="DaisyWheel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BZN-P5-14z"/>
+                        <viewControllerLayoutGuide type="bottom" id="hbw-tq-w7R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QEy-13-pqW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ikU-NP-1Yu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7b3-dt-8Vq" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2339" y="1091"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="gnl-bc-aDj">
+            <objects>
+                <viewController id="exL-ul-EUW" customClass="VideoViewController" customModule="DaisyWheel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cMw-m4-a6d"/>
+                        <viewControllerLayoutGuide type="bottom" id="4KJ-Vm-KpE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jah-VJ-CTc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfS-9k-KLL">
+                                <rect key="frame" x="285" y="285" width="30" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <segue destination="Yn7-uf-UhP" kind="presentation" id="NgA-Hp-OtY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PfS-9k-KLL" firstAttribute="centerX" secondItem="jah-VJ-CTc" secondAttribute="centerX" id="H4J-sA-CN1"/>
+                            <constraint firstItem="PfS-9k-KLL" firstAttribute="centerY" secondItem="jah-VJ-CTc" secondAttribute="centerY" id="xQR-Nl-TkH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hA3-wv-V2R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NEp-8K-Hdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1638" y="1091"/>
+        </scene>
+        <!--Fourth-->
+        <scene sceneID="emC-Ea-aL3">
+            <objects>
+                <viewController id="Q6F-pa-jmC" userLabel="Fourth" customClass="ReminderViewController" customModule="DaisyWheel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tHD-Rj-6W2"/>
+                        <viewControllerLayoutGuide type="bottom" id="2kh-Mm-i6h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5LE-jf-e7S">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Reminder" image="icon-reminder-off" id="aZz-Qr-1Vi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="91b-q1-zk1" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="428" y="1739"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="xKs-78-Gpi" kind="relationship" relationship="viewControllers" id="RRW-Gv-Q0F"/>
+                        <segue destination="Q6F-pa-jmC" kind="relationship" relationship="viewControllers" id="Fdu-Ez-GzP"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-440" y="-584"/>
+        </scene>
+        <!--Video-->
+        <scene sceneID="nJD-do-dPI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKs-78-Gpi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Video" image="icon-video-off" id="42B-DK-vZ4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WHU-6i-H3A">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="exL-ul-EUW" kind="relationship" relationship="rootViewController" id="RK2-ZW-ErE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Cz-cP-6hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950" y="1098"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-camera-off" width="30" height="30"/>
+        <image name="icon-reminder-off" width="27" height="29"/>
+        <image name="icon-video-off" width="30" height="30"/>
+        <image name="icon-wheel-off" width="29" height="30"/>
+    </resources>
+</document>
