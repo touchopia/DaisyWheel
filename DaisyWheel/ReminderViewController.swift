@@ -9,17 +9,28 @@
 import UIKit
 
 class ReminderViewController: UIViewController {
+    
+    let dateFormatter = NSDateFormatter()
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var dateLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        datePicker.datePickerMode = .DateAndTime
+        datePicker.date = NSDate()
+        datePickerChanged()
     }
-
+    
+    @IBAction func datePickerChanged() {
+        
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        
+        dateLabel.text = dateFormatter.stringFromDate(datePicker.date)
+    }
 
 }
 
