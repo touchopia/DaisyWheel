@@ -14,8 +14,6 @@
 		5E2EE1431C0E87F4000A1047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E2EE1421C0E87F4000A1047 /* Assets.xcassets */; };
 		5E2EE1461C0E87F4000A1047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E2EE1441C0E87F4000A1047 /* LaunchScreen.storyboard */; };
 		5E2EE1501C0E8894000A1047 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EE14E1C0E8894000A1047 /* ReminderViewController.swift */; };
-		5E2EE1521C0E8B60000A1047 /* TLSpinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EE1511C0E8B60000A1047 /* TLSpinView.swift */; };
-		5E2EE1541C0E8B70000A1047 /* TLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EE1531C0E8B70000A1047 /* TLImageView.swift */; };
 		5EF83E651C1332C600CB3C76 /* GITGirlsProgram.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5EF83E641C1332A500CB3C76 /* GITGirlsProgram.mp4 */; };
 		5EF83E671C1336B300CB3C76 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF83E661C1336B300CB3C76 /* VideoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,8 +28,6 @@
 		5E2EE1451C0E87F4000A1047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E2EE1471C0E87F4000A1047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E2EE14E1C0E8894000A1047 /* ReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
-		5E2EE1511C0E8B60000A1047 /* TLSpinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLSpinView.swift; sourceTree = "<group>"; };
-		5E2EE1531C0E8B70000A1047 /* TLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLImageView.swift; sourceTree = "<group>"; };
 		5EF83E641C1332A500CB3C76 /* GITGirlsProgram.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = GITGirlsProgram.mp4; sourceTree = "<group>"; };
 		5EF83E661C1336B300CB3C76 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,8 +64,6 @@
 			children = (
 				5E2EE1391C0E87F4000A1047 /* AppDelegate.swift */,
 				5E2EE13B1C0E87F4000A1047 /* WheelViewController.swift */,
-				5E2EE1511C0E8B60000A1047 /* TLSpinView.swift */,
-				5E2EE1531C0E8B70000A1047 /* TLImageView.swift */,
 				5E2EE13D1C0E87F4000A1047 /* PhotoViewController.swift */,
 				5EF83E661C1336B300CB3C76 /* VideoViewController.swift */,
 				5E2EE14E1C0E8894000A1047 /* ReminderViewController.swift */,
@@ -154,10 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E2EE1541C0E8B70000A1047 /* TLImageView.swift in Sources */,
 				5EF83E671C1336B300CB3C76 /* VideoViewController.swift in Sources */,
 				5E2EE13E1C0E87F4000A1047 /* PhotoViewController.swift in Sources */,
-				5E2EE1521C0E8B60000A1047 /* TLSpinView.swift in Sources */,
 				5E2EE1501C0E8894000A1047 /* ReminderViewController.swift in Sources */,
 				5E2EE13A1C0E87F4000A1047 /* AppDelegate.swift in Sources */,
 				5E2EE13C1C0E87F4000A1047 /* WheelViewController.swift in Sources */,
