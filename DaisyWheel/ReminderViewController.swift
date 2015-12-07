@@ -14,22 +14,71 @@ class ReminderViewController: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var bottomContraint: NSLayoutConstraint!
+    
+    var datePickerIsHidden = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // setup date format
         
-        datePicker.datePickerMode = .DateAndTime
-        datePicker.date = NSDate()
-        datePickerChanged()
+        dateFormatter.dateStyle = .NoStyle
+        dateFormatter.timeStyle = .ShortStyle
+        
+        // setup datePicker
+        
+        datePicker?.datePickerMode = .Time
+        datePicker?.minuteInterval = 15
+        datePicker?.date = NSDate()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        datePickerIsHidden = true
+        self.bottomContraint.constant -= self.datePicker.frame.size.height
+    }
+    
+    @IBAction func toggleDatePicker() {
+        
+        if datePickerIsHidden == true {
+            showDatePicker()
+        } else {
+            hideDatePicker()
+        }
+        
+    }
+    
+    func showDatePicker() {
+        
+        if datePickerIsHidden == true {
+            
+            datePickerIsHidden = false
+            
+            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseOut, animations: {
+            self.bottomContraint.constant += self.datePicker.frame.size.height
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+    
+    func hideDatePicker() {
+        
+        if datePickerIsHidden == false {
+            datePickerIsHidden = true
+        
+            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseOut, animations: {
+                self.bottomContraint.constant -= self.datePicker.frame.size.height
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+        }
     }
     
     @IBAction func datePickerChanged() {
         
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        
-        dateLabel.text = dateFormatter.stringFromDate(datePicker.date)
+        if let picker = datePicker {
+            dateLabel.text = dateFormatter.stringFromDate(picker.date)
+        }
     }
 
 }
