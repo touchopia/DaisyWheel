@@ -35,6 +35,7 @@ class ReminderViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        datePickerChanged()
         datePickerIsHidden = true
         self.bottomContraint.constant -= self.datePicker.frame.size.height
     }
