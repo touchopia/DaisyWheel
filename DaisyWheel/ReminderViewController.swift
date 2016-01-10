@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ReminderViewController: UIViewController {
+class ReminderViewController: UIViewController, UITextFieldDelegate {
     
     let dateFormatter = NSDateFormatter()
     
+    @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
@@ -21,6 +22,11 @@ class ReminderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        // set text field delegate and return type
+        descriptionTextField.delegate = self
+        descriptionTextField.returnKeyType = .Done
+        
         // setup date format
         
         dateFormatter.dateStyle = .NoStyle
@@ -80,6 +86,11 @@ class ReminderViewController: UIViewController {
         if let picker = datePicker {
             dateLabel.text = dateFormatter.stringFromDate(picker.date)
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 }
