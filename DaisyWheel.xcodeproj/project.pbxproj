@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5E2EE13A1C0E87F4000A1047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EE1391C0E87F4000A1047 /* AppDelegate.swift */; };
-		5E2EE13C1C0E87F4000A1047 /* WheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EE13B1C0E87F4000A1047 /* WheelViewController.swift */; };
 		5E2EE13E1C0E87F4000A1047 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EE13D1C0E87F4000A1047 /* PhotoViewController.swift */; };
 		5E2EE1411C0E87F4000A1047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E2EE13F1C0E87F4000A1047 /* Main.storyboard */; };
 		5E2EE1431C0E87F4000A1047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E2EE1421C0E87F4000A1047 /* Assets.xcassets */; };
@@ -16,7 +15,17 @@
 		5E2EE1501C0E8894000A1047 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EE14E1C0E8894000A1047 /* ReminderViewController.swift */; };
 		5E9AD3FB1C1CDD11005555A5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9AD3FA1C1CDD11005555A5 /* DetailViewController.swift */; };
 		5ECBE6041C1361BE0098E1B5 /* PinchZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECBE6031C1361BE0098E1B5 /* PinchZoomImageView.swift */; };
-		5ED00FF91C151C59003DC25F /* WheelImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED00FF81C151C59003DC25F /* WheelImageView.swift */; };
+		5ED970551C4EAACC0015066F /* SpinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED970521C4EAACC0015066F /* SpinImageView.swift */; };
+		5ED970561C4EAACC0015066F /* SpinningWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED970531C4EAACC0015066F /* SpinningWheel.swift */; };
+		5ED970571C4EAACC0015066F /* WheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED970541C4EAACC0015066F /* WheelViewController.swift */; };
+		5ED970671C4EAB000015066F /* Merriweather-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5ED9705B1C4EAB000015066F /* Merriweather-Bold.otf */; };
+		5ED9706A1C4EAB000015066F /* Merriweather-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5ED9705E1C4EAB000015066F /* Merriweather-Italic.otf */; };
+		5ED9706B1C4EAB000015066F /* Merriweather-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5ED9705F1C4EAB000015066F /* Merriweather-Light.otf */; };
+		5ED9706D1C4EAB000015066F /* Merriweather-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5ED970611C4EAB000015066F /* Merriweather-Regular.otf */; };
+		5ED9706E1C4EAB000015066F /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ED970621C4EAB000015066F /* SIL Open Font License.txt */; };
+		5ED9706F1C4EAB000015066F /* click.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5ED970641C4EAB000015066F /* click.caf */; };
+		5ED970701C4EAB000015066F /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5ED970651C4EAB000015066F /* click.mp3 */; };
+		5ED970721C4EAB220015066F /* SpinWheelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED970711C4EAB220015066F /* SpinWheelDelegate.swift */; };
 		5EF83E651C1332C600CB3C76 /* GITGirlsProgram.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5EF83E641C1332A500CB3C76 /* GITGirlsProgram.mp4 */; };
 		5EF83E671C1336B300CB3C76 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF83E661C1336B300CB3C76 /* VideoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -24,7 +33,6 @@
 /* Begin PBXFileReference section */
 		5E2EE1361C0E87F4000A1047 /* DaisyWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaisyWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E2EE1391C0E87F4000A1047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5E2EE13B1C0E87F4000A1047 /* WheelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelViewController.swift; sourceTree = "<group>"; };
 		5E2EE13D1C0E87F4000A1047 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		5E2EE1401C0E87F4000A1047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E2EE1421C0E87F4000A1047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,7 +41,17 @@
 		5E2EE14E1C0E8894000A1047 /* ReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		5E9AD3FA1C1CDD11005555A5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5ECBE6031C1361BE0098E1B5 /* PinchZoomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinchZoomImageView.swift; sourceTree = "<group>"; };
-		5ED00FF81C151C59003DC25F /* WheelImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelImageView.swift; sourceTree = "<group>"; };
+		5ED970521C4EAACC0015066F /* SpinImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinImageView.swift; sourceTree = "<group>"; };
+		5ED970531C4EAACC0015066F /* SpinningWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinningWheel.swift; sourceTree = "<group>"; };
+		5ED970541C4EAACC0015066F /* WheelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelViewController.swift; sourceTree = "<group>"; };
+		5ED9705B1C4EAB000015066F /* Merriweather-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Bold.otf"; sourceTree = "<group>"; };
+		5ED9705E1C4EAB000015066F /* Merriweather-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Italic.otf"; sourceTree = "<group>"; };
+		5ED9705F1C4EAB000015066F /* Merriweather-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Light.otf"; sourceTree = "<group>"; };
+		5ED970611C4EAB000015066F /* Merriweather-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Regular.otf"; sourceTree = "<group>"; };
+		5ED970621C4EAB000015066F /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		5ED970641C4EAB000015066F /* click.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = click.caf; sourceTree = "<group>"; };
+		5ED970651C4EAB000015066F /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		5ED970711C4EAB220015066F /* SpinWheelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinWheelDelegate.swift; sourceTree = "<group>"; };
 		5EF83E641C1332A500CB3C76 /* GITGirlsProgram.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = GITGirlsProgram.mp4; sourceTree = "<group>"; };
 		5EF83E661C1336B300CB3C76 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,20 +87,53 @@
 			isa = PBXGroup;
 			children = (
 				5E2EE1391C0E87F4000A1047 /* AppDelegate.swift */,
-				5E2EE13B1C0E87F4000A1047 /* WheelViewController.swift */,
 				5E2EE13D1C0E87F4000A1047 /* PhotoViewController.swift */,
 				5E9AD3FA1C1CDD11005555A5 /* DetailViewController.swift */,
 				5EF83E661C1336B300CB3C76 /* VideoViewController.swift */,
 				5E2EE14E1C0E8894000A1047 /* ReminderViewController.swift */,
-				5ED00FF81C151C59003DC25F /* WheelImageView.swift */,
 				5ECBE6031C1361BE0098E1B5 /* PinchZoomImageView.swift */,
+				5ED970521C4EAACC0015066F /* SpinImageView.swift */,
+				5ED970711C4EAB220015066F /* SpinWheelDelegate.swift */,
+				5ED970531C4EAACC0015066F /* SpinningWheel.swift */,
+				5ED970541C4EAACC0015066F /* WheelViewController.swift */,
 				5E2EE13F1C0E87F4000A1047 /* Main.storyboard */,
+				5ED970581C4EAB000015066F /* Resources */,
 				5E2EE1421C0E87F4000A1047 /* Assets.xcassets */,
 				5EF83E641C1332A500CB3C76 /* GITGirlsProgram.mp4 */,
 				5E2EE1441C0E87F4000A1047 /* LaunchScreen.storyboard */,
 				5E2EE1471C0E87F4000A1047 /* Info.plist */,
 			);
 			path = DaisyWheel;
+			sourceTree = "<group>";
+		};
+		5ED970581C4EAB000015066F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5ED970591C4EAB000015066F /* fonts */,
+				5ED970631C4EAB000015066F /* sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5ED970591C4EAB000015066F /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5ED9705B1C4EAB000015066F /* Merriweather-Bold.otf */,
+				5ED9705E1C4EAB000015066F /* Merriweather-Italic.otf */,
+				5ED9705F1C4EAB000015066F /* Merriweather-Light.otf */,
+				5ED970611C4EAB000015066F /* Merriweather-Regular.otf */,
+				5ED970621C4EAB000015066F /* SIL Open Font License.txt */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		5ED970631C4EAB000015066F /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5ED970641C4EAB000015066F /* click.caf */,
+				5ED970651C4EAB000015066F /* click.mp3 */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,9 +195,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EF83E651C1332C600CB3C76 /* GITGirlsProgram.mp4 in Resources */,
+				5ED9706A1C4EAB000015066F /* Merriweather-Italic.otf in Resources */,
 				5E2EE1461C0E87F4000A1047 /* LaunchScreen.storyboard in Resources */,
+				5ED9706F1C4EAB000015066F /* click.caf in Resources */,
+				5ED970701C4EAB000015066F /* click.mp3 in Resources */,
+				5ED970671C4EAB000015066F /* Merriweather-Bold.otf in Resources */,
+				5ED9706E1C4EAB000015066F /* SIL Open Font License.txt in Resources */,
 				5E2EE1431C0E87F4000A1047 /* Assets.xcassets in Resources */,
 				5E2EE1411C0E87F4000A1047 /* Main.storyboard in Resources */,
+				5ED9706D1C4EAB000015066F /* Merriweather-Regular.otf in Resources */,
+				5ED9706B1C4EAB000015066F /* Merriweather-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,12 +216,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ECBE6041C1361BE0098E1B5 /* PinchZoomImageView.swift in Sources */,
+				5ED970561C4EAACC0015066F /* SpinningWheel.swift in Sources */,
 				5EF83E671C1336B300CB3C76 /* VideoViewController.swift in Sources */,
 				5E2EE13E1C0E87F4000A1047 /* PhotoViewController.swift in Sources */,
+				5ED970551C4EAACC0015066F /* SpinImageView.swift in Sources */,
+				5ED970571C4EAACC0015066F /* WheelViewController.swift in Sources */,
+				5ED970721C4EAB220015066F /* SpinWheelDelegate.swift in Sources */,
 				5E2EE1501C0E8894000A1047 /* ReminderViewController.swift in Sources */,
 				5E2EE13A1C0E87F4000A1047 /* AppDelegate.swift in Sources */,
-				5ED00FF91C151C59003DC25F /* WheelImageView.swift in Sources */,
-				5E2EE13C1C0E87F4000A1047 /* WheelViewController.swift in Sources */,
 				5E9AD3FB1C1CDD11005555A5 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
