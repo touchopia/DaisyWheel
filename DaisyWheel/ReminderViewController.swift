@@ -1,97 +1,64 @@
 //
-//  ReminderViewController.swift
-//  DaisyWheel
+//  TableViewController.swift
 //
-//  Created by Phil Wright on 12/1/15.
-//  Copyright © 2015 Touchopia, LLC. All rights reserved.
+//
+//  Created by Phil Wright on 1/10/16.
+//  Copyright © 2016 Touchopia, LLC. All rights reserved.
 //
 
 import UIKit
 
-class ReminderViewController: UIViewController, UITextFieldDelegate {
+class ReminderViewController: UITableViewController {
     
-    let dateFormatter = NSDateFormatter()
-    
-    @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var bottomContraint: NSLayoutConstraint!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
-    var datePickerIsHidden = false
-
+    var dateToggle = true
+    
+    lazy var dateFormatter: NSDateFormatter = {
+        var formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .ShortStyle
+        return formatter
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        // set text field delegate and return type
-        descriptionTextField.delegate = self
-        descriptionTextField.returnKeyType = .Done
-        
-        // setup date format
-        
-        dateFormatter.dateStyle = .NoStyle
-        dateFormatter.timeStyle = .ShortStyle
-        
-        // setup datePicker
-        
-        datePicker?.datePickerMode = .Time
-        datePicker?.minuteInterval = 15
-        datePicker?.date = NSDate()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         datePickerChanged()
-        datePickerIsHidden = true
-        self.bottomContraint.constant -= self.datePicker.frame.size.height
     }
     
-    @IBAction func toggleDatePicker() {
-        
-        if datePickerIsHidden == true {
-            showDatePicker()
-        } else {
-            hideDatePicker()
+    func datePickerChanged () {
+        dateLabel.text = dateFormatter.stringFromDate(datePicker.date)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if dateToggle && indexPath.section == 0 && indexPath.row == 1 {
+            return 0
         }
-        
-    }
-    
-    func showDatePicker() {
-        
-        if datePickerIsHidden == true {
-            
-            datePickerIsHidden = false
-            
-            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseOut, animations: {
-            self.bottomContraint.constant += self.datePicker.frame.size.height
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+        else {
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
     }
     
-    func hideDatePicker() {
-        
-        if datePickerIsHidden == false {
-            datePickerIsHidden = true
-        
-            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseOut, animations: {
-                self.bottomContraint.constant -= self.datePicker.frame.size.height
-                self.view.layoutIfNeeded()
-                }, completion: nil)
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            toggleDatePickerForSelectedIndexPath(indexPath)
         }
     }
     
-    @IBAction func datePickerChanged() {
+    @IBAction func datePickerHasChanged(sender: AnyObject) {
+        datePickerChanged()
         
-        if let picker = datePicker {
-            dateLabel.text = dateFormatter.stringFromDate(picker.date)
-        }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    func toggleDatePickerForSelectedIndexPath(indexPath: NSIndexPath) {
+        
+        dateToggle = (dateToggle == true) ? false : true
+        
+        tableView.beginUpdates()
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.endUpdates()
+        
     }
-
 }
-
