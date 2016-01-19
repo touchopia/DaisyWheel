@@ -12,6 +12,7 @@ import AVFoundation
 class PhotoViewController: UIViewController {
     
     @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var noCameraLabel: UILabel!
     
     var captureSession: AVCaptureSession = AVCaptureSession()
     var stillImageOutput: AVCaptureStillImageOutput?
@@ -33,7 +34,10 @@ class PhotoViewController: UIViewController {
         
         captureSession.sessionPreset = AVCaptureSessionPresetPhoto
         
-        let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        guard let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo) else {
+            self.noCameraLabel.hidden = false
+            return
+        }
         
         var error : NSError?
         var input: AVCaptureDeviceInput?
@@ -74,7 +78,7 @@ class PhotoViewController: UIViewController {
         if let layer = previewLayer {
             layer.frame = previewView.bounds
         } else {
-            print("No Layer Created")
+            print("No Layer Created -- Are we on the simulator?")
         }
     }
     

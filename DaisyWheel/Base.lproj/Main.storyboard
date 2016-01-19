@@ -121,11 +121,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Camera Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoJ-K6-a3T">
+                                <rect key="frame" x="221" y="289.5" width="158" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="STQ-um-oKf" firstAttribute="width" secondItem="NiA-ch-ypf" secondAttribute="width" id="RcU-vf-qJN"/>
+                            <constraint firstItem="UoJ-K6-a3T" firstAttribute="centerY" secondItem="NiA-ch-ypf" secondAttribute="centerY" id="Vsq-Bo-heQ"/>
                             <constraint firstItem="STQ-um-oKf" firstAttribute="centerY" secondItem="NiA-ch-ypf" secondAttribute="centerY" id="cMe-Ay-jfE"/>
+                            <constraint firstItem="UoJ-K6-a3T" firstAttribute="centerX" secondItem="NiA-ch-ypf" secondAttribute="centerX" id="lfP-XL-teX"/>
                             <constraint firstItem="STQ-um-oKf" firstAttribute="centerX" secondItem="NiA-ch-ypf" secondAttribute="centerX" id="m1K-ya-gSt"/>
                             <constraint firstItem="STQ-um-oKf" firstAttribute="height" secondItem="NiA-ch-ypf" secondAttribute="height" id="v8L-fS-BVD"/>
                         </constraints>
@@ -133,6 +141,7 @@
                     <navigationItem key="navigationItem" id="3dD-rG-HMM"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="noCameraLabel" destination="UoJ-K6-a3T" id="eiF-LH-qcT"/>
                         <outlet property="previewView" destination="STQ-um-oKf" id="8Nr-GD-tZi"/>
                         <segue destination="RMr-Nf-jQw" kind="show" identifier="ShowImage" id="qHw-lS-Wi2"/>
                     </connections>
