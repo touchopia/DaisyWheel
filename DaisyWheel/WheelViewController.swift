@@ -29,7 +29,10 @@ class WheelViewController: UIViewController, SpinWheelDelegate {
         
         tipImage = UIImageView(image: wheelTipsImage)
         tipImage.userInteractionEnabled = false
-        tipImage.frame = CGRect(x: 0, y: 86, width: 320, height: 196)
+        
+        let tipFrame = tipImage.frame
+        
+        tipImage.frame = CGRect(x: 0, y: 86, width: tipFrame.size.width, height: tipFrame.size.height)
         
         tipImage.center = CGPoint(x:width / 2, y: 180)
         
@@ -44,6 +47,7 @@ class WheelViewController: UIViewController, SpinWheelDelegate {
         self.view.addSubview(wheelImage)
         self.view.addSubview(wheelCover)
         
+        self.view.addSubview(tipImage)
         self.showTipNumber(1)
     }
     
@@ -59,7 +63,7 @@ class WheelViewController: UIViewController, SpinWheelDelegate {
         
         tipImage.hidden = false
         
-        let tipImageString = "tip-\(number).png"
+        let tipImageString = "i_tip-\(number).png"
         
         if let tip = UIImage(named: tipImageString) {
             tipImage.image = tip
@@ -102,6 +106,8 @@ class WheelViewController: UIViewController, SpinWheelDelegate {
             wheel.moveFromAngle(wheel.angle, toAngle: newAngle)
         }
         
+        print("Rounded: \(rounded)")
+        
         if rounded >= 8 {
             rounded -= 8;
         }
@@ -110,6 +116,10 @@ class WheelViewController: UIViewController, SpinWheelDelegate {
             self.showTipNumber(Int(rounded) + 1)
         } else if rounded < 0 {
             self.showTipNumber(Int(rounded) + 9)
+        }
+        
+        if rounded == 0 {
+            tipImage.hidden = true
         }
     }
     

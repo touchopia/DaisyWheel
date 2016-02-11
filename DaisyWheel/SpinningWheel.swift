@@ -34,6 +34,8 @@ class SpinningWheel: UIView {
     var currentTouch: UITouch?
     
     var isAnimating = false
+    
+    //MARK: - Animation Methods
 
     func startAnimating() {
         
@@ -108,12 +110,17 @@ class SpinningWheel: UIView {
             
                 self.angle = useAngle
                 
+                print(angularVelocity)
+                print(lastTimerDate)
+                
                 lastTimerDate = NSDate()
                 
                 self.setNeedsDisplay()
             }
         }
     }
+    
+    //MARK: - Calculation Methods
     
     func calculateFinalAngularVelocity(touch: UITouch) -> CGFloat {
         var finalVelocity: CGFloat = 0.0
@@ -138,6 +145,7 @@ class SpinningWheel: UIView {
         return newAngle
     }
     
+    //MARK: - Touches
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -219,8 +227,12 @@ class SpinningWheel: UIView {
                     }
                 }
             }
+        } else {
+            self.stopAnimating()
         }
     }
+    
+    //MARK: - Angle
     
     func moveFromAngle(fromAngle:CGFloat, toAngle:CGFloat) {
         if(fromAngle>toAngle) {
