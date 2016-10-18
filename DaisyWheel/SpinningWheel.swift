@@ -10,30 +10,25 @@ import UIKit
 
 class SpinningWheel: UIView {
     
-    var enableSpinning = false
-    var isSpinning = false
+    open var enableSpinning = false
+    open var isSpinning = false
+    open var isAnimating = false
     
-    var angle: CGFloat = 0.0 {
+    open var angle: CGFloat = 0.0 {
         didSet {
             delegate?.spinWheelAngleDidChange(self)
         }
     }
     
+    fileprivate var drag: CGFloat = 0.0
+    fileprivate var angularVelocity: CGFloat = 0.0
+    fileprivate var initialAngle: CGFloat = 0.0
+    fileprivate var lastTimerDate: Date?
+    fileprivate var displayTimer: CADisplayLink?
+    fileprivate var previousTouchDate: Date?
+    fileprivate var currentTouch: UITouch?
     
-    var drag: CGFloat = 0.0
-    var angularVelocity: CGFloat = 0.0
-    var initialAngle: CGFloat = 0.0
-    
-    var delegate: SpinWheelDelegate?
-    
-    var lastTimerDate: NSDate?
-    var displayTimer: CADisplayLink?
-    
-    var previousTouchDate: NSDate?
-    
-    var currentTouch: UITouch?
-    
-    var isAnimating = false
+    open var delegate: SpinWheelDelegate?
     
     //MARK: - Animation Methods
 
@@ -43,8 +38,8 @@ class SpinningWheel: UIView {
         
         isSpinning = false
         lastTimerDate = nil
-        displayTimer = CADisplayLink(target: self, selector: Selector("animationTimer"))
-        displayTimer?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+        displayTimer = CADisplayLink(target: self, selector: #selector(SpinningWheel.animationTimer))
+        displayTimer?.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
     }
     
     func stopAnimating() {
@@ -59,16 +54,16 @@ class SpinningWheel: UIView {
     func animationTimer() {
         
         if lastTimerDate == nil {
-            lastTimerDate = NSDate()
+            lastTimerDate = Date()
         }
         else if lastTimerDate != nil && angularVelocity == 0 {
-            lastTimerDate = NSDate()
+            lastTimerDate = Date()
             self.stopAnimating()
         }
         else {
             
             if let timerDate = lastTimerDate {
-                let passed = NSDate().timeIntervalSinceDate(timerDate)
+                let passed = Date().timeIntervalSince(timerDate)
                 let angleReduction = drag * CGFloat(passed) * abs(angularVelocity)
             
                 if (angularVelocity < 0) {
@@ -113,7 +108,7 @@ class SpinningWheel: UIView {
                 print(angularVelocity)
                 print(lastTimerDate)
                 
-                lastTimerDate = NSDate()
+                lastTimerDate = Date()
                 
                 self.setNeedsDisplay()
             }
@@ -122,20 +117,20 @@ class SpinningWheel: UIView {
     
     //MARK: - Calculation Methods
     
-    func calculateFinalAngularVelocity(touch: UITouch) -> CGFloat {
+    func calculateFinalAngularVelocity(_ touch: UITouch) -> CGFloat {
         var finalVelocity: CGFloat = 0.0
         
         if let touchedDate = previousTouchDate {
-            let today = NSDate()
-            let delay = today.timeIntervalSinceDate(touchedDate)
-            let prevAngle = self.angleForPoint(touch.previousLocationInView(self))
-            let endAngle = self.angleForPoint(touch.locationInView(self))
+            let today = Date()
+            let delay = today.timeIntervalSince(touchedDate)
+            let prevAngle = self.angleForPoint(touch.previousLocation(in: self))
+            let endAngle = self.angleForPoint(touch.location(in: self))
             finalVelocity = CGFloat(endAngle - prevAngle) / CGFloat(delay)
         }
         return finalVelocity
     }
     
-    func angleForPoint(point: CGPoint) -> CGFloat {
+    func angleForPoint(_ point: CGPoint) -> CGFloat {
         
         var newAngle = atan2(point.y - self.frame.size.height / 2, point.x - self.frame.size.width / 2)
         
@@ -147,7 +142,7 @@ class SpinningWheel: UIView {
     
     //MARK: - Touches
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         print("touchesBegan")
         
@@ -157,27 +152,27 @@ class SpinningWheel: UIView {
             shouldReact = delegate.spinWheelShouldBeginTouch(self)
         }
         
-        if shouldReact && (currentTouch == nil || (currentTouch?.phase == UITouchPhase.Cancelled || currentTouch?.phase == UITouchPhase.Ended)) {
+        if shouldReact && (currentTouch == nil || (currentTouch?.phase == UITouchPhase.cancelled || currentTouch?.phase == UITouchPhase.ended)) {
             currentTouch = touches.first
             angularVelocity	= 0;
             initialAngle = angle;
-            previousTouchDate = NSDate()
+            previousTouchDate = Date()
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         print("touchesMoved")
         
         if let touch = currentTouch {
             
             if touches.contains(touch) {
-                let touchPoint	= touch.locationInView(self)
-                let prevPoint	= touch.previousLocationInView(self)
+                let touchPoint	= touch.location(in: self)
+                let prevPoint	= touch.previousLocation(in: self)
                 let	touchAngle	= self.angleForPoint(touchPoint)
                 let prevAngle	= self.angleForPoint(prevPoint)
                 
-                previousTouchDate = NSDate()
+                previousTouchDate = Date()
                 
                 var change = touchAngle - prevAngle
                 
@@ -194,7 +189,7 @@ class SpinningWheel: UIView {
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         print("touchesEnded")
         
@@ -213,15 +208,15 @@ class SpinningWheel: UIView {
                 
             } else {
                 
-                let point = self.currentTouch?.locationInView(self)
+                let point = self.currentTouch?.location(in: self)
                 let leftTapZone = CGRect(x: 0, y: 20, width: 130, height: 200)
                 let rightTapZone = CGRect(x: 172, y: 20, width: 130, height: 200)
                 
                 if let point = point {
-                    if CGRectContainsPoint(leftTapZone, point) {
+                    if leftTapZone.contains(point) {
                         //left tap
                         self.moveFromAngle(self.angle, toAngle:self.angle - CGFloat(M_PI_4))
-                    } else if CGRectContainsPoint(rightTapZone, point) {
+                    } else if rightTapZone.contains(point) {
                         //right tap
                         self.moveFromAngle(self.angle, toAngle:self.angle + CGFloat(M_PI_4))
                     }
@@ -234,7 +229,7 @@ class SpinningWheel: UIView {
     
     //MARK: - Angle
     
-    func moveFromAngle(fromAngle:CGFloat, toAngle:CGFloat) {
+    func moveFromAngle(_ fromAngle:CGFloat, toAngle:CGFloat) {
         if(fromAngle>toAngle) {
             print("left")
         }

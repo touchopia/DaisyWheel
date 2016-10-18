@@ -14,28 +14,25 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var noCameraLabel: UILabel!
     
-    var captureSession: AVCaptureSession = AVCaptureSession()
-    var stillImageOutput: AVCaptureStillImageOutput?
-    var previewLayer: AVCaptureVideoPreviewLayer?
-    var capturedImage: UIImage?
+    fileprivate var captureSession: AVCaptureSession = AVCaptureSession()
+    fileprivate var stillImageOutput: AVCaptureStillImageOutput?
+    fileprivate var previewLayer: AVCaptureVideoPreviewLayer?
+    fileprivate var capturedImage: UIImage?
     
     //MARK: - View Controller Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let recognizer = UITapGestureRecognizer(target: self, action: Selector("takePhoto"))
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(PhotoViewController.takePhoto))
         self.view.addGestureRecognizer(recognizer)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         captureSession.sessionPreset = AVCaptureSessionPresetPhoto
         
-        guard let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo) else {
-            self.noCameraLabel.hidden = false
+        guard let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo) else {
+            self.noCameraLabel.isHidden = false
             return
         }
         
@@ -60,7 +57,7 @@ class PhotoViewController: UIViewController {
                 
                 if let layer = AVCaptureVideoPreviewLayer(session: captureSession) {
                     layer.videoGravity = AVLayerVideoGravityResizeAspect
-                    layer.connection?.videoOrientation = AVCaptureVideoOrientation.Portrait
+                    layer.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
                     previewView.layer.addSublayer(layer)
                     previewLayer = layer
                 }
@@ -68,13 +65,9 @@ class PhotoViewController: UIViewController {
                 captureSession.startRunning()
             }
         }
-        
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         if let layer = previewLayer {
             layer.frame = previewView.bounds
         } else {
@@ -83,44 +76,38 @@ class PhotoViewController: UIViewController {
     }
     
     func takePhoto() {
-        
         guard let output = stillImageOutput else {
             print("No Output Detected")
             return
         }
         
-        if let videoConnection = output.connectionWithMediaType(AVMediaTypeVideo) {
-            videoConnection.videoOrientation = AVCaptureVideoOrientation.Portrait
-            output.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: {(sampleBuffer, error) in
+        if let videoConnection = output.connection(withMediaType: AVMediaTypeVideo) {
+            videoConnection.videoOrientation = AVCaptureVideoOrientation.portrait
+            output.captureStillImageAsynchronously(from: videoConnection, completionHandler: {(sampleBuffer, error) in
                 if (sampleBuffer != nil) {
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
-                    let dataProvider = CGDataProviderCreateWithCFData(imageData)
-                    let cgImageRef = CGImageCreateWithJPEGDataProvider(dataProvider, nil, true, CGColorRenderingIntent.RenderingIntentDefault)
+                    let dataProvider = CGDataProvider(data: imageData as! CFData)
+                    let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     
-                    let image = UIImage(CGImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.Right)
+                    let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
                     self.capturedImage = image
                     
-                    self.performSegueWithIdentifier("ShowImage", sender: self)
+                    self.performSegue(withIdentifier: "ShowImage", sender: self)
                 }
             })
         }
     }
-    
-    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
         if unwindSegue.identifier == "ShowImage" {
             
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowImage" {
-            if let controller = segue.destinationViewController as? DetailViewController {
+            if let controller = segue.destination as? DetailViewController {
                 controller.capturedImage = self.capturedImage
             }
-            
         }
     }
-    
 }
 

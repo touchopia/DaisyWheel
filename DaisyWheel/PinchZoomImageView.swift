@@ -12,97 +12,79 @@ import QuartzCore
 class PinchZoomImageView: UIImageView, UIGestureRecognizerDelegate {
     
     // Required init methods
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.initialize()
+        setupView()
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initialize()
+        setupView()
     }
-    
     override init(image: UIImage?) {
         super.init(image: image)
-        self.initialize()
+        setupView()
     }
-    
-    func initialize() {
-        
+    func setupView() {
         // Important for allow user interaction on images
-        
-        self.userInteractionEnabled = true
-        self.multipleTouchEnabled = true
-        self.exclusiveTouch = true
+        self.isUserInteractionEnabled = true
+        self.isMultipleTouchEnabled = true
+        self.isExclusiveTouch = true
 
-        
         // Aspect Fit the Image
-        self.contentMode = .ScaleAspectFit
+        self.contentMode = .scaleAspectFit
         
         // Important: One gesture recognizer type is required to monitor this UIImageView
         
         // 1. Add the Tap Gesture
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action:Selector("handleTap:"))
+        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(PinchZoomImageView.handleTap(_:)))
         tapGesture.delegate = self
         self.addGestureRecognizer(tapGesture)
 
         // 2. Add the Pan Gesture
-        
-        let panGesture = UIPanGestureRecognizer(target: self, action:Selector("handlePan:"))
+        let panGesture = UIPanGestureRecognizer(target: self, action:#selector(PinchZoomImageView.handlePan(_:)))
         panGesture.delegate = self
         self.addGestureRecognizer(panGesture)
         
         // 3. Add the Pinch Gesture
-        
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action:Selector("handlePinch:"))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action:#selector(PinchZoomImageView.handlePinch(_:)))
         pinchGesture.delegate = self
         self.addGestureRecognizer(pinchGesture)
 
         // 4. Add the Rotate Gesture
-        
-        let rotateGesture = UIRotationGestureRecognizer(target: self, action:Selector("handleRotate:"))
+        let rotateGesture = UIRotationGestureRecognizer(target: self, action:#selector(PinchZoomImageView.handleRotate(_:)))
         rotateGesture.delegate = self
         self.addGestureRecognizer(rotateGesture)
     }
 
     // Mark - Gesture Methods
-    
-    func handleTap(recognizer: UITapGestureRecognizer) {
+    func handleTap(_ recognizer: UITapGestureRecognizer) {
         if let view = recognizer.view {
-            view.superview!.bringSubviewToFront(self)
+            view.superview!.bringSubview(toFront: self)
         }
     }
-
-    func handlePan(recognizer:UIPanGestureRecognizer) {
-        
-        let translation = recognizer.translationInView(recognizer.view)
+    func handlePan(_ recognizer:UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: recognizer.view)
         
         if let view = recognizer.view {
-            view.transform = CGAffineTransformTranslate(view.transform, translation.x, translation.y)
+            view.transform = view.transform.translatedBy(x: translation.x, y: translation.y)
         }
-        
-        recognizer.setTranslation(CGPointZero, inView: self)
+        recognizer.setTranslation(CGPoint.zero, in: self)
     }
-    
-    func handlePinch(recognizer : UIPinchGestureRecognizer) {
+    func handlePinch(_ recognizer : UIPinchGestureRecognizer) {
         if let view = recognizer.view {
-            view.transform = CGAffineTransformScale(view.transform, recognizer.scale, recognizer.scale)
+            view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
             recognizer.scale = 1
         }
     }
-    
-    func handleRotate(recognizer : UIRotationGestureRecognizer) {
+    func handleRotate(_ recognizer : UIRotationGestureRecognizer) {
         if let view = recognizer.view {
-            view.transform = CGAffineTransformRotate(view.transform, recognizer.rotation)
+            view.transform = view.transform.rotated(by: recognizer.rotation)
             recognizer.rotation = 0
         }
     }
-    
     // Needed to allow multiple touches (i.e. zoom and pinch)
     func gestureRecognizer(_: UIGestureRecognizer,
-        shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
+        shouldRecognizeSimultaneouslyWith shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
             return true
     }
 }

@@ -9,8 +9,8 @@
 import Foundation
 
 protocol SpinWheelDelegate {
-    func spinWheelDidStartSpinningFromInertia(wheel: SpinningWheel)
-    func spinWheelDidFinishSpinning(wheel: SpinningWheel)
-    func spinWheelAngleDidChange(wheel: SpinningWheel)
-    func spinWheelShouldBeginTouch(wheel: SpinningWheel) -> Bool
+    func spinWheelDidStartSpinningFromInertia(_ wheel: SpinningWheel)
+    func spinWheelDidFinishSpinning(_ wheel: SpinningWheel)
+    func spinWheelAngleDidChange(_ wheel: SpinningWheel)
+    func spinWheelShouldBeginTouch(_ wheel: SpinningWheel) -> Bool
 }

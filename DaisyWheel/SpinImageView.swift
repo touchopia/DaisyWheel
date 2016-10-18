@@ -14,18 +14,17 @@ class SpinImageView: SpinningWheel {
         didSet {
             delegate?.spinWheelAngleDidChange(self)
             
-            UIView.animateWithDuration(0.5) { () -> Void in
+            UIView.animate(withDuration: 0.5, animations: { () -> Void in
                 self.imageView.layer.transform = CATransform3DMakeRotation(self.angle, 0, 0, 1)
-            }
+            }) 
         }
     }
-    
-    var image = UIImage() {
+    open var image = UIImage() {
         didSet {
             self.imageView.image = image
         }
     }
-    var imageView: UIImageView = UIImageView()
+    fileprivate var imageView: UIImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,8 +44,8 @@ class SpinImageView: SpinningWheel {
     
     func setupView() {
         imageView = UIImageView(frame: self.bounds)
-        imageView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-        imageView.contentMode = .ScaleAspectFit
+        imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        imageView.contentMode = .scaleAspectFit
         imageView.image = self.image
         self.addSubview(imageView)
     }

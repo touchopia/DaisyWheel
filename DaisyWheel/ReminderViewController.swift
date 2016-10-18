@@ -13,52 +13,44 @@ class ReminderViewController: UITableViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var dateToggle = true
+    open var dateToggle = true
     
-    lazy var dateFormatter: NSDateFormatter = {
-        var formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        formatter.timeStyle = .ShortStyle
+    lazy var dateFormatter: DateFormatter = {
+        var formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
         return formatter
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         datePickerChanged()
     }
-    
-    func datePickerChanged () {
-        dateLabel.text = dateFormatter.stringFromDate(datePicker.date)
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if dateToggle && indexPath.section == 0 && indexPath.row == 1 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if dateToggle && (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 1 {
             return 0
         }
         else {
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 && indexPath.row == 0 {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
             toggleDatePickerForSelectedIndexPath(indexPath)
         }
     }
     
-    @IBAction func datePickerHasChanged(sender: AnyObject) {
+    @IBAction func datePickerHasChanged(_ sender: AnyObject) {
         datePickerChanged()
-        
     }
     
-    func toggleDatePickerForSelectedIndexPath(indexPath: NSIndexPath) {
-        
+    func datePickerChanged () {
+        dateLabel.text = dateFormatter.string(from: datePicker.date)
+    }
+    
+    func toggleDatePickerForSelectedIndexPath(_ indexPath: IndexPath) {
         dateToggle = (dateToggle == true) ? false : true
-        
         tableView.beginUpdates()
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         tableView.endUpdates()
-        
     }
 }

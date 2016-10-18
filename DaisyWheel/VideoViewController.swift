@@ -11,26 +11,14 @@ import AVKit
 import AVFoundation
 
 class VideoViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue,
-        sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MoviePlayer" {
+            let destination = segue.destination as! AVPlayerViewController
             
-            if segue.identifier == "MoviePlayer" {
-                let destination = segue.destinationViewController as! AVPlayerViewController
-                
-                if let path = NSBundle.mainBundle().pathForResource("GITGirlsProgram", ofType:"mp4") {
-                    let url = NSURL(fileURLWithPath: path)
-                    destination.player = AVPlayer(URL: url)
-                }
+            if let path = Bundle.main.path(forResource: "GITGirlsProgram", ofType:"mp4") {
+                let url = URL(fileURLWithPath: path)
+                destination.player = AVPlayer(url: url)
             }
+        }
     }
 }
